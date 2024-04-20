@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_master"
         mc:Ignorable="d"
-        Title="BankApp" Height="450" Width="800">
+        Title="Accounts" Height="450" Width="800" Loaded="Window_Loaded">
     <DockPanel>
         <Grid>
             <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
@@ -20,24 +20,27 @@
             <Label Content="Account Number:" HorizontalAlignment="Left" Margin="345,64,0,0" VerticalAlignment="Top"/>
             <Label Content="Sort Code:" HorizontalAlignment="Left" Margin="345,95,0,0" VerticalAlignment="Top"/>
             <Label Content="Overdraft Limit:" HorizontalAlignment="Left" Margin="345,126,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtFirstname" HorizontalAlignment="Left" Margin="105,68,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <ComboBox x:Name="cboCounty" HorizontalAlignment="Left" Margin="105,283,0,0" VerticalAlignment="Top" Width="193"/>
-            <RadioButton x:Name="rdoCurrent" Content="Current" HorizontalAlignment="Left" Margin="105,318,0,0" VerticalAlignment="Top" IsChecked="True"/>
-            <RadioButton x:Name="rdoSavings" Content="Savings" HorizontalAlignment="Left" Margin="213,318,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Margin="105,99,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="105,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Margin="105,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <TextBox x:Name="txtAddress1" HorizontalAlignment="Left" Margin="105,192,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <TextBox x:Name="txtAddress2" HorizontalAlignment="Left" Margin="105,223,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <TextBox x:Name="txtCity" HorizontalAlignment="Left" Margin="105,254,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <TextBox x:Name="txtAccountNum" HorizontalAlignment="Left" Margin="453,68,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <TextBox x:Name="txtSortCode" HorizontalAlignment="Left" Margin="453,99,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <TextBox x:Name="txtOverdraftLimit" HorizontalAlignment="Left" Margin="453,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
-            <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="680,64,0,0" VerticalAlignment="Top" Width="110" Height="40" />
-            <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="680,119,0,0" VerticalAlignment="Top" Width="110" Height="40"/>
-            <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="680,174,0,0" VerticalAlignment="Top" Width="110" Height="40" IsCancel="True"/>
-            <Button x:Name="btnExport" Content="Export XML" HorizontalAlignment="Left" Margin="680,229,0,0" VerticalAlignment="Top" Width="110" Height="40"/>
-            <Button x:Name="btnCLose" Content="Close" HorizontalAlignment="Left" Margin="680,283,0,0" VerticalAlignment="Top" Width="110" Height="40"/>
+            <TextBox x:Name="txtFirstname" TabIndex="1" HorizontalAlignment="Left" Margin="105,68,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <ComboBox x:Name="cboCounty" TabIndex="8" HorizontalAlignment="Left" Margin="105,283,0,0" VerticalAlignment="Top" Width="193"/>
+            <TextBox x:Name="txtSurname" TabIndex="2" HorizontalAlignment="Left" Margin="105,99,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <TextBox x:Name="txtEmail" TabIndex="3" HorizontalAlignment="Left" Margin="105,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <TextBox x:Name="txtPhone" TabIndex="4" HorizontalAlignment="Left" Margin="105,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <TextBox x:Name="txtAddress1" TabIndex="5" HorizontalAlignment="Left" Margin="105,192,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <TextBox x:Name="txtAddress2" TabIndex="6" HorizontalAlignment="Left" Margin="105,223,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <TextBox x:Name="txtCity" TabIndex="7" HorizontalAlignment="Left" Margin="105,254,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <TextBox x:Name="txtAccountNum" TabIndex="11" HorizontalAlignment="Left" Margin="453,68,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <TextBox x:Name="txtSortCode" TabIndex="12" HorizontalAlignment="Left" Margin="453,99,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <TextBox x:Name="txtOverdraftLimit" TabIndex="13" HorizontalAlignment="Left" Margin="453,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="680,64,0,0" VerticalAlignment="Top" Width="110" Height="40" Click="btnAdd_Click" />
+            <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="680,119,0,0" VerticalAlignment="Top" Width="110" Height="40" Click="btnEdit_Click"/>
+            <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="680,174,0,0" VerticalAlignment="Top" Width="110" Height="40" IsCancel="True" Click="btnCancel_Click"/>
+            <Button x:Name="btnExport" Content="Export XML" HorizontalAlignment="Left" Margin="680,229,0,0" VerticalAlignment="Top" Width="110" Height="40" Click="btnExport_Click"/>
+            <Button x:Name="btnCLose" Content="Close" HorizontalAlignment="Left" Margin="680,283,0,0" VerticalAlignment="Top" Width="110" Height="40" Click="btnClose_Click"/>
+            <ComboBox x:Name="cboAccountType" TabIndex="9" HorizontalAlignment="Left" Margin="105,316,0,0" VerticalAlignment="Top" Width="193" SelectionChanged="cboAccountType_SelectionChanged" />
+            <Rectangle HorizontalAlignment="Left" Height="47" Margin="18,17,0,0" Stroke="Black" VerticalAlignment="Top" Width="620"/>
+            <Label Content="Account ID:" HorizontalAlignment="Left" Margin="33,25,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtFindAccountID" TabIndex="0" HorizontalAlignment="Left" Margin="105,29,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
+            <Button x:Name="btnFind" Content="Find" HorizontalAlignment="Left" Height="22" Margin="319,25,0,0" VerticalAlignment="Top" Width="81" Click="btnFind_Click"/>
 
         </Grid>
     </DockPanel>
