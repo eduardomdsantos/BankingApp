@@ -49,9 +49,9 @@ namespace DAL
     };
     public enum TransactionType
     {
-        Deposit,
-        SEPA,
-        Tranfer,
+        Lodge,
+        Internal_Transfer,
+        External_Transfer,
         Withdraw,
     };
 

@@ -54,5 +54,27 @@ namespace Assignment
             cmd.ExecuteNonQuery();
             CloseCon();
         }
+        public void PerformTransaction(Transaction newTransaction)
+        {
+            SqlCommand cmd = OpenCon().CreateCommand();
+            cmd.CommandText = "PerformTransaction";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@SourceAccountID", newTransaction.AccountID);
+            cmd.Parameters.AddWithValue("@DestinationAccountID", newTransaction.DestinationAccountID);
+            cmd.Parameters.AddWithValue("@Amount", newTransaction.Amount);
+            cmd.Parameters.AddWithValue("@TransactionType", newTransaction.TransactionType);
+            cmd.Parameters.AddWithValue("@UserID", 1); // Assuming a default user ID
+            cmd.Parameters.AddWithValue("@RecipientBankName", newTransaction.RecipientBankName);
+            cmd.Parameters.AddWithValue("@RecipientAccountNumber", newTransaction.RecipientAccountNumber);
+            cmd.Parameters.AddWithValue("@RecipientAccountHolderName", newTransaction.RecipientAccountHolderName);
+            cmd.Parameters.AddWithValue("@IntermediaryBankName", newTransaction.IntermediaryBankName);
+            cmd.Parameters.AddWithValue("@IntermediaryBankAccountNumber", newTransaction.IntermediaryBankAccountNumber);
+            cmd.Parameters.AddWithValue("@ReferenceNumber", newTransaction.TransferReference);
+
+
+            cmd.ExecuteNonQuery();
+            CloseCon();
+        }
+
     }
 }

@@ -64,22 +64,22 @@ CREATE TABLE [Account] (
 )
 
 CREATE TABLE [Transaction] (
-  [TransactionID] int IDENTITY(1,1) PRIMARY KEY,
-  [UserID] int,
-  [AccountID] int,
-  [TransactionType] nvarchar(255),
-  [Amount] decimal,
-  [TransactionDate] datetime,
-  [TransferReference] nvarchar(255),
-  [RecipientBankName] nvarchar(255),
-  [RecipientAccountNumber] nvarchar(255),
-  [RecipientAccountHolderName] nvarchar(255),
-  [IntermediaryBankName] nvarchar(255),
-  [IntermediaryBankAccountNumber] nvarchar(255),
-  CONSTRAINT FK_Transaction_User FOREIGN KEY ([UserID]) REFERENCES [User] ([UserID]),
-  CONSTRAINT FK_Transaction_Account FOREIGN KEY ([AccountID]) REFERENCES [Account] ([AccountID])
-)
-
+    [TransactionID] INT IDENTITY(1,1) PRIMARY KEY,
+    [UserID] INT,
+    [AccountID] INT,
+    [TransactionType] NVARCHAR(255),
+    [Amount] DECIMAL,
+    [TransactionDate] DATETIME,
+    [TransferReference] NVARCHAR(255),
+    [RecipientBankName] NVARCHAR(255),
+    [RecipientAccountNumber] NVARCHAR(255),
+    [RecipientAccountHolderName] NVARCHAR(255),
+    [IntermediaryBankName] NVARCHAR(255),
+    [IntermediaryBankAccountNumber] NVARCHAR(255),
+    [IsTransfer] CHAR(1), 
+    CONSTRAINT FK_Transaction_User FOREIGN KEY ([UserID]) REFERENCES [User] ([UserID]),
+    CONSTRAINT FK_Transaction_Account FOREIGN KEY ([AccountID]) REFERENCES [Account] ([AccountID])
+);
 GO
 
 CREATE OR ALTER PROCEDURE AddUser
@@ -325,7 +325,13 @@ CREATE OR ALTER PROCEDURE PerformTransaction
     @DestinationAccountID INT,
     @Amount DECIMAL,
     @TransactionType NVARCHAR(50),
-    @UserID INT
+    @UserID INT,
+    @ReferenceNumber NVARCHAR(255) = NULL,
+    @RecipientBankName NVARCHAR(255) = NULL,
+    @RecipientAccountNumber NVARCHAR(255) = NULL,
+    @RecipientAccountHolderName NVARCHAR(255) = NULL,
+    @IntermediaryBankName NVARCHAR(255) = NULL,
+    @IntermediaryBankAccountNumber NVARCHAR(255) = NULL
 AS
 BEGIN
     DECLARE @SourceBalance DECIMAL
@@ -333,22 +339,41 @@ BEGIN
 
     BEGIN TRY
         BEGIN TRANSACTION;
-        
+
         SELECT @SourceBalance = Balance FROM Account WHERE AccountID = @SourceAccountID
         SELECT @DestinationBalance = Balance FROM Account WHERE AccountID = @DestinationAccountID
 
-        IF @TransactionType = 'Lodge' OR @TransactionType = 'BankTransfer'
+        IF @TransactionType = 'Lodge'
         BEGIN
-            UPDATE Account SET Balance = @DestinationBalance + @Amount WHERE AccountID = @DestinationAccountID
-            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate)
-            VALUES (@UserID, @DestinationAccountID, 'Lodgement', @Amount, GETDATE())
+            UPDATE Account SET Balance = @SourceBalance + @Amount WHERE AccountID = @SourceAccountID
+            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, IsTransfer)
+            VALUES (@UserID, @SourceAccountID, 'Lodge', @Amount, GETDATE(), 'N') 
         END
-        
-        IF @TransactionType = 'Withdraw' OR @TransactionType = 'BankTransfer'
+
+        IF @TransactionType = 'Withdraw'
         BEGIN
             UPDATE Account SET Balance = @SourceBalance - @Amount WHERE AccountID = @SourceAccountID
-            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate)
-            VALUES (@UserID, @SourceAccountID, 'Withdrawal', @Amount, GETDATE())
+            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, IsTransfer)
+            VALUES (@UserID, @SourceAccountID, 'Withdrawal', @Amount, GETDATE(), 'N') 
+        END
+
+        IF @TransactionType = 'Internal_Transfer'
+        BEGIN
+            UPDATE Account SET Balance = @SourceBalance - @Amount WHERE AccountID = @SourceAccountID
+            UPDATE Account SET Balance = @DestinationBalance + @Amount WHERE AccountID = @DestinationAccountID
+
+            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, IsTransfer)
+            VALUES (@UserID, @SourceAccountID, 'Withdrawal', @Amount, GETDATE(), 'Y') 
+
+            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, IsTransfer)
+            VALUES (@UserID, @DestinationAccountID, 'Lodge', @Amount, GETDATE(), 'Y') 
+        END
+
+        IF @TransactionType = 'External_Transfer'
+        BEGIN
+            UPDATE Account SET Balance = @SourceBalance - @Amount WHERE AccountID = @SourceAccountID
+            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, RecipientBankName, RecipientAccountNumber, RecipientAccountHolderName, IntermediaryBankName, IntermediaryBankAccountNumber, IsTransfer)
+            VALUES (@UserID, @SourceAccountID, 'Withdrawal', @Amount, GETDATE(), @RecipientBankName, @RecipientAccountNumber, @RecipientAccountHolderName, @IntermediaryBankName, @IntermediaryBankAccountNumber, 'Y') 
         END
 
         COMMIT TRANSACTION;
@@ -363,6 +388,8 @@ BEGIN
 END
 GO
 
+
+
 -- Insert default admin user
 EXEC AddUser 
     @FirstName = 'Admin', 
@@ -375,3 +402,31 @@ EXEC AddUser
     @County = 'Dublin', 
     @Username = 'admin', 
     @Password = 'admin';
+
+GO
+
+DECLARE @i INT = 1
+WHILE @i <= 10
+BEGIN
+    DECLARE @AccountNumber INT = 1000 + @i
+    DECLARE @SortCode INT = 100000 + @i
+
+    DECLARE @AccountHolderName NVARCHAR(255) = 'Account Holder Name' + CAST(@i AS NVARCHAR(10))
+
+    EXEC AddAccount 
+        @FirstName = @AccountHolderName, 
+        @Surname = 'Surname', 
+        @Email = 'admin@example.com', 
+        @Phone = '123456789', 
+        @AddressLine1 = '123 Admin Street', 
+        @AddressLine2 = NULL, 
+        @City = 'Dublin', 
+        @County = 'Dublin', 
+        @AccountNumber = @AccountNumber, 
+        @SortCode = @SortCode, 
+        @AccountType = 'Current', 
+        @Balance = 0, 
+        @OverdraftLimit = 5000;
+
+    SET @i = @i + 1;
+END;
