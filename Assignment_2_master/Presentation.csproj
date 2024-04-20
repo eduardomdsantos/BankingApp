@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FormTransaction.xaml.cs">
+      <DependentUpon>FormTransaction.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormUser.xaml.cs">
       <DependentUpon>FormUser.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="FormTransaction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FormUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

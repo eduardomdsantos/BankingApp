@@ -37,6 +37,12 @@ namespace Assignment_2_master
             fu.ShowDialog();
 
         }
+        private void MenuTransaction_Click(object sender, RoutedEventArgs e)
+        {
+            var ft = new FormTransaction();
+            ft.ShowDialog();
+
+        }
         private void ShowLoginForm()
         {
             var loginForm = new LoginForm();
