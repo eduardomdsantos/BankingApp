@@ -60,6 +60,7 @@
     <Compile Include="Account.cs" />
     <Compile Include="AddData.cs" />
     <Compile Include="DAO.cs" />
+    <Compile Include="LoginDAO.cs" />
     <Compile Include="Perform.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,15 +68,6 @@
     <Compile Include="Transaction.cs" />
     <Compile Include="UpdateData.cs" />
     <Compile Include="User.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Bank.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Bank_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Bank.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

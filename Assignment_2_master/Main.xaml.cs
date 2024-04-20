@@ -22,6 +22,10 @@ namespace Assignment_2_master
         public Main()
         {
             InitializeComponent();
+
+            var loginForm = new LoginForm();
+
+            loginForm.ShowDialog();
         }
 
         private void MenuUser_Click(object sender, RoutedEventArgs e)
