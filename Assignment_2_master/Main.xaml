@@ -13,15 +13,16 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Users" Click="MenuUser_Click"></MenuItem>
+                <Separator/>
                 <MenuItem Header="Logout" Click="MenuLogout_Click"></MenuItem>
                 <MenuItem Header="Exit" Click="MenuClose_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Account">
                 <MenuItem Header="Account" Click="MenuAccounts_Click"></MenuItem>
+                <Separator/>
                 <MenuItem Header="Make Transaction"></MenuItem>
                 <MenuItem Header="View Transactions"></MenuItem>
             </MenuItem>
-            <MenuItem Header="View Accounts"></MenuItem>
         </Menu>
         <StackPanel>
             <TextBlock Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" Text="List of Accounts" />
