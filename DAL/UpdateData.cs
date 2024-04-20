@@ -31,5 +31,22 @@ namespace Assignment
             cmd.ExecuteNonQuery();
             CloseCon();
         }
+        public void UpdateAccount(Account updateAccount)
+        {
+            SqlCommand cmd = OpenCon().CreateCommand();
+            cmd.CommandText = "UpdateAccount";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@AccountID", updateAccount.AccountId);
+            cmd.Parameters.AddWithValue("@Email", updateAccount.Email);
+            cmd.Parameters.AddWithValue("@Phone", updateAccount.Phone);
+            cmd.Parameters.AddWithValue("@AddressLine1", updateAccount.Address1);
+            cmd.Parameters.AddWithValue("@AddressLine2", updateAccount.Address2);
+            cmd.Parameters.AddWithValue("@City", updateAccount.City);
+            cmd.Parameters.AddWithValue("@County", updateAccount.County);
+            cmd.Parameters.AddWithValue("@OverdraftLimit", updateAccount.OverdraftLimit);
+
+            cmd.ExecuteNonQuery();
+            CloseCon();
+        }
     }
 }

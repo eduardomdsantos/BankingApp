@@ -15,7 +15,7 @@ namespace DAL
         public decimal Balance { get; set; }
         public decimal OverdraftLimit { get; set; }
         public Account(string firstName, string surName,string email, string phone, string address1, string address2, string city, string county,
-            int accountNum, int sortCode, string accountType, decimal balance, decimal overdraftLimit):
+            int accountNum, int sortCode, string accountType, decimal balance, decimal overdraftLimit, int accountId = 0):
             base(firstName,surName,email,phone,address1,address2,city,county)
         {
             AccountNum = accountNum;
@@ -23,6 +23,7 @@ namespace DAL
             AccountType = accountType;
             Balance = balance;
             OverdraftLimit = overdraftLimit;
+            AccountId = accountId;
         }
     }
 }
