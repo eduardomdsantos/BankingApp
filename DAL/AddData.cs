@@ -11,7 +11,7 @@ using DAL;
 
 namespace Assignment
 {
-    class AddData : DAO
+    public class AddData : DAO
     {
         public void AddUser(User newUser)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class Account:Person
+    public class Account:Person
     {
         public int AccountId {  get; set; }
         public int AccountNum { get; set; }

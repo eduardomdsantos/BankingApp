@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace Assignment
 {
-    internal class DAO
+    public class DAO
     {
         SqlConnection con;
         public DAO() 
