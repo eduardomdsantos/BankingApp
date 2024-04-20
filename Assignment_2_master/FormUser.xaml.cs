@@ -27,7 +27,8 @@ namespace Assignment_2_master
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-             var newUser = new DAL.User(firstName, surName, email, phone, address1, address2, city, county, username, password);
+            var newUser = new DAL.User(firstName, surName, email, phone, address1, address2, city, county, username, password);
+
 
         }
     }

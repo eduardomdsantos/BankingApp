@@ -23,5 +23,12 @@ namespace Assignment_2_master
         {
             InitializeComponent();
         }
+
+        private void MenuUser_Click(object sender, RoutedEventArgs e)
+        {
+            var fu = new FormUser();
+            fu.ShowDialog();
+
+        }
     }
 }

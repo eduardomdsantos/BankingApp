@@ -9,9 +9,8 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
-                <MenuItem Header="Login"></MenuItem>
-                <MenuItem Header="Log out"></MenuItem>
-                <MenuItem Header="Register"></MenuItem>
+                <MenuItem Header="Users" Click="MenuUser_Click"></MenuItem>
+                <MenuItem Header="Logout"></MenuItem>
                 <MenuItem Header="Exit"></MenuItem>
             </MenuItem>
             <MenuItem Header="Account">
@@ -24,11 +23,6 @@
             </MenuItem>
             <MenuItem Header="View Accounts"></MenuItem>
         </Menu>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="9*"/>
-                <ColumnDefinition Width="391*"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
+        <Grid/>
     </DockPanel>
 </Window>
