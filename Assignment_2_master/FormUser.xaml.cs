@@ -45,7 +45,7 @@ namespace Assignment_2_master
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            if (TestRequiredFields() == false) { return; }
             string firstName = txtFirstname.Text;
             string surName = txtSurname.Text;
             string email = txtEmail.Text;
@@ -154,27 +154,26 @@ namespace Assignment_2_master
                         BIZ.Utils.PopulateComboBox(cboCounty,foundUser.County);
                         txtUsername.Text = foundUser.Username;                      
                         ControlButton(true);
+                        return;
                     }
                     else
                     {
-                        BIZ.Utils.ShowMessageBox("Person not found!");
-                        CleanFields();
+                        BIZ.Utils.ShowMessageBox("User not found!");
                     }
                 }
                 else
                 {
-                    BIZ.Utils.ShowMessageBox("Please enter a valid Person ID!");
-                    CleanFields();
+                    BIZ.Utils.ShowMessageBox("Please enter a valid User ID!");
 
                 }
             }
             else
             {
-                BIZ.Utils.ShowMessageBox("Please enter a Person ID!");
-                CleanFields();
+                BIZ.Utils.ShowMessageBox("Please enter a User ID!");
 
             }
-
+            CleanFields();
+            ControlButton(false);
 
         }
 
