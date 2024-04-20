@@ -28,6 +28,7 @@ namespace Assignment_2_master
             InitializeComponent();
             CleanFields();
             ControlButton(false);
+            SetEditMode(true);
         }
 
         AddData add = new AddData();
@@ -55,6 +56,15 @@ namespace Assignment_2_master
             btnCancel.IsEnabled = editMode;
             btnEdit.IsEnabled   = editMode && foundAccount != null;
             btnExport.IsEnabled = editMode && foundAccount != null;
+
+        }
+        private void SetEditMode(bool editMode)
+        {          
+            txtFirstname.IsEnabled = editMode;
+            txtSurname.IsEnabled = editMode;
+            cboAccountType.IsEnabled = editMode;
+            txtAccountNum.IsEnabled = editMode;
+            txtSortCode.IsEnabled = editMode;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -219,6 +229,7 @@ namespace Assignment_2_master
                         BIZ.Utils.PopulateComboBox(cboAccountType, foundAccount.AccountType);                        
                         txtOverdraftLimit.Text = foundAccount.OverdraftLimit.ToString();
                         ControlButton(true);
+                        SetEditMode(false);
                         return;
                     }
                     else
@@ -237,6 +248,7 @@ namespace Assignment_2_master
             }
             CleanFields();
             ControlButton(false);
+            SetEditMode(true);
         }
 
         private void btnExport_Click(object sender, RoutedEventArgs e)

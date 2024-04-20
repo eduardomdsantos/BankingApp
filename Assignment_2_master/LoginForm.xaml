@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_master"
-        mc:Ignorable="d"
-        Title="LoginForm" Height="450" Width="800">
+        mc:Ignorable="d"        
+        Title="LoginForm" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBox x:Name="txtUsername" TabIndex="0" HorizontalAlignment="Center" Margin="0,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="264"/>
         <PasswordBox x:Name="txtPassword" TabIndex="1" HorizontalAlignment="Center" Margin="0,199,0,0" VerticalAlignment="Top" Width="264" PasswordChar="*" />

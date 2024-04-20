@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_master"
         mc:Ignorable="d"
-        Title="Main" Height="450" Width="800">
+        Title="Main"
+        MinWidth="1280" 
+        MinHeight="768"        
+        WindowStartupLocation="CenterScreen">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
@@ -15,19 +18,14 @@
             </MenuItem>
             <MenuItem Header="Account">
                 <MenuItem Header="Account" Click="MenuAccounts_Click"></MenuItem>
-                <MenuItem Header="Deposit Funds"></MenuItem>
-                <MenuItem Header="Withdraw Funds"></MenuItem>
-                <MenuItem Header="Transfer Funds"></MenuItem>
+                <MenuItem Header="Make Transaction"></MenuItem>
                 <MenuItem Header="View Transactions"></MenuItem>
             </MenuItem>
             <MenuItem Header="View Accounts"></MenuItem>
         </Menu>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="16*"/>
-                <ColumnDefinition Width="53*"/>
-                <ColumnDefinition Width="731*"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
+        <StackPanel>
+            <TextBlock Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" Text="List of Accounts" />
+            <DataGrid x:Name="dgAccounts" AutoGenerateColumns="True" d:ItemsSource="{d:SampleData ItemCount=5}" />
+        </StackPanel>
     </DockPanel>
 </Window>

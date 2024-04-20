@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_master"
         mc:Ignorable="d"
-        Title="Accounts" Height="450" Width="800" Loaded="Window_Loaded">
+        MinWidth="900" 
+        MinHeight="600"             
+        Title="Accounts" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <Grid>
             <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
@@ -33,7 +35,7 @@
             <TextBox x:Name="txtOverdraftLimit" TabIndex="13" HorizontalAlignment="Left" Margin="453,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193"/>
             <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="680,64,0,0" VerticalAlignment="Top" Width="110" Height="40" Click="btnAdd_Click" />
             <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="680,119,0,0" VerticalAlignment="Top" Width="110" Height="40" Click="btnEdit_Click"/>
-            <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="680,174,0,0" VerticalAlignment="Top" Width="110" Height="40" IsCancel="True" Click="btnCancel_Click"/>
+            <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="680,174,0,0" VerticalAlignment="Top" Width="110" Height="40" Click="btnCancel_Click"/>
             <Button x:Name="btnExport" Content="Export XML" HorizontalAlignment="Left" Margin="680,229,0,0" VerticalAlignment="Top" Width="110" Height="40" Click="btnExport_Click"/>
             <Button x:Name="btnCLose" Content="Close" HorizontalAlignment="Left" Margin="680,283,0,0" VerticalAlignment="Top" Width="110" Height="40" Click="btnClose_Click"/>
             <ComboBox x:Name="cboAccountType" TabIndex="9" HorizontalAlignment="Left" Margin="105,316,0,0" VerticalAlignment="Top" Width="193" SelectionChanged="cboAccountType_SelectionChanged" />

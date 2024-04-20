@@ -295,6 +295,30 @@ BEGIN
         A.AccountID = @AccountID;
 END
 GO
+CREATE OR ALTER PROCEDURE GetAllAccounts
+AS
+BEGIN
+    SELECT 
+        A.AccountID,
+        P.FirstName,
+        P.Surname,
+        P.Email,
+        P.Phone,
+        P.AddressLine1,
+        P.AddressLine2,
+        P.City,
+        P.County,
+        A.AccountNumber,
+        A.SortCode,
+        A.AccountType,
+        A.Balance,
+        A.OverdraftLimit
+    FROM 
+        Account A
+    INNER JOIN 
+        PersonalInfo P ON A.PersonalInfoID = P.PersonalInfoID;
+END
+GO
 
 CREATE OR ALTER PROCEDURE PerformTransaction
     @SourceAccountID INT,

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Assignment;
 
 namespace Assignment_2_master
 {
@@ -24,6 +27,7 @@ namespace Assignment_2_master
             InitializeComponent();
 
             ShowLoginForm();
+            Activated += MainWindow_Activated;
 
         }
 
@@ -58,6 +62,17 @@ namespace Assignment_2_master
             var fa = new FormAccounts();
             fa.ShowDialog();
 
+        }
+        private void LoadAccounts()
+        {
+            var accountDAO = new AccountDAO();
+            DataTable dt = accountDAO.GetAllAccounts();
+
+            dgAccounts.ItemsSource = dt.DefaultView;
+        }
+        private void MainWindow_Activated(object sender, EventArgs e)
+        {
+            LoadAccounts();
         }
     }
 }

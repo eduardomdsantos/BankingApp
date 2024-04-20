@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_master"
         mc:Ignorable="d"
-        Title="FormUser" Height="450" Width="800" Loaded="Window_Loaded">
+        MinWidth="900" 
+        MinHeight="600"          
+        Title="FormUser" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" >
     <DockPanel>
         <Grid>
             <Grid.ColumnDefinitions>
