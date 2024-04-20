@@ -1,4 +1,5 @@
 ﻿using Assignment;
+using System;
 using System.Windows;
 
 namespace Assignment_2_master
@@ -16,7 +17,6 @@ namespace Assignment_2_master
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
             // Get values from input boxes
             string firstName = txtFirstname.Text;
             string surName = txtSurname.Text;
@@ -33,6 +33,10 @@ namespace Assignment_2_master
 
             add.AddUser(newUser);
 
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cboCounty.ItemsSource = Enum.GetValues(typeof(DAL.Counties));
         }
     }
 }

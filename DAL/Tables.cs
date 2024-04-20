@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment
+namespace DAL
 {
-    enum Counties
+    public enum Counties
     {
         Antrim,
         Armagh,
@@ -41,16 +42,17 @@ namespace Assignment
         Wexford,
         Wicklow
     };
-    enum AccountType
+    public enum AccountType
     {
         Current,
         Savings
     };
-    enum TransactionType
+    public enum TransactionType
     {
         Deposit,
         SEPA,
         Tranfer,
         Withdraw,
     };
+
 }
