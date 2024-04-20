@@ -1,3 +1,34 @@
+IF OBJECT_ID('dbo.PerformTransaction', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.PerformTransaction;
+
+IF OBJECT_ID('dbo.UpdateAccount', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.UpdateAccount;
+
+IF OBJECT_ID('dbo.AddAccount', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.AddAccount;
+
+IF OBJECT_ID('dbo.LoginUser', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.LoginUser;
+
+IF OBJECT_ID('dbo.UpdateUser', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.UpdateUser;
+
+IF OBJECT_ID('dbo.AddUser', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.AddUser;
+
+IF OBJECT_ID('dbo.[Transaction]', 'U') IS NOT NULL
+    DROP TABLE dbo.[Transaction];
+
+IF OBJECT_ID('dbo.Account', 'U') IS NOT NULL
+    DROP TABLE dbo.Account;
+
+IF OBJECT_ID('dbo.[User]', 'U') IS NOT NULL
+    DROP TABLE dbo.[User];
+
+IF OBJECT_ID('dbo.PersonalInfo', 'U') IS NOT NULL
+    DROP TABLE dbo.PersonalInfo;
+
+
 CREATE TABLE [PersonalInfo] (
   [PersonalInfoID] int IDENTITY(1,1) PRIMARY KEY,
   [FirstName] nvarchar(255),
@@ -15,8 +46,11 @@ CREATE TABLE [User] (
   [PersonalInfoID] int,
   [Username] nvarchar(255),
   [PasswordHash] nvarchar(255),
+  [PasswordSalt] nvarchar(255),
   CONSTRAINT FK_User_PersonalInfo FOREIGN KEY ([PersonalInfoID]) REFERENCES [PersonalInfo] ([PersonalInfoID])
 )
+
+GO
 
 CREATE TABLE [Account] (
   [AccountID] int IDENTITY(1,1) PRIMARY KEY,
@@ -171,6 +205,44 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE UpdateAccount
+    @AccountID INT,
+    @Email NVARCHAR(255),
+    @Phone NVARCHAR(255),
+    @AddressLine1 NVARCHAR(255),
+    @AddressLine2 NVARCHAR(255),
+    @City NVARCHAR(255),
+    @County NVARCHAR(255),
+    @OverdraftLimit DECIMAL
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        UPDATE PersonalInfo
+        SET Email = @Email,
+            Phone = @Phone,
+            AddressLine1 = @AddressLine1,
+            AddressLine2 = @AddressLine2,
+            City = @City,
+            County = @County
+        WHERE PersonalInfoID = (SELECT PersonalInfoID FROM Account WHERE AccountID = @AccountID)
+
+        UPDATE Account
+        SET OverdraftLimit = @OverdraftLimit
+        WHERE AccountID = @AccountID
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+        RAISERROR(@ErrorMessage, 16, 1);
+    END CATCH
+END
+GO
 
 CREATE PROCEDURE PerformTransaction
     @SourceAccountID INT,
@@ -214,3 +286,16 @@ BEGIN
     END CATCH
 END
 GO
+
+-- Insert default admin user
+EXEC AddUser 
+    @FirstName = 'Admin', 
+    @Surname = 'Admin', 
+    @Email = 'admin@example.com', 
+    @Phone = '123456789', 
+    @AddressLine1 = '123 Admin Street', 
+    @AddressLine2 = '123 Admin Street', 
+    @City = 'Admin City', 
+    @County = 'Admin County', 
+    @Username = 'admin', 
+    @Password = 'admin';
