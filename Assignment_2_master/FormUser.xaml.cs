@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Assignment;
+using System.Windows;
 
 namespace Assignment_2_master
 {
@@ -11,6 +12,7 @@ namespace Assignment_2_master
         {
             InitializeComponent();
         }
+        AddData add = new AddData();
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -29,6 +31,7 @@ namespace Assignment_2_master
 
             var newUser = new DAL.User(firstName, surName, email, phone, address1, address2, city, county, username, password);
 
+            add.AddUser(newUser);
 
         }
     }

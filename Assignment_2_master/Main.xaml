@@ -23,6 +23,11 @@
             </MenuItem>
             <MenuItem Header="View Accounts"></MenuItem>
         </Menu>
-        <Grid/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="49*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
     </DockPanel>
 </Window>

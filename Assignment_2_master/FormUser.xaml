@@ -7,23 +7,6 @@
         mc:Ignorable="d"
         Title="FormUser" Height="450" Width="800">
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
-                <MenuItem Header="Login"></MenuItem>
-                <MenuItem Header="Logout"></MenuItem>
-                <MenuItem Header="Register"></MenuItem>
-                <MenuItem Header="Exit"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="Account">
-                <MenuItem Header="New Account"></MenuItem>
-                <MenuItem Header="Edit Account"></MenuItem>
-                <MenuItem Header="Deposit Funds"></MenuItem>
-                <MenuItem Header="Withdraw Funds"></MenuItem>
-                <MenuItem Header="Transfer Funds"></MenuItem>
-                <MenuItem Header="View Transactions"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="View Accounts"></MenuItem>
-        </Menu>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="16*"/>
