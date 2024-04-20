@@ -82,7 +82,7 @@ CREATE TABLE [Transaction] (
 
 GO
 
-CREATE PROCEDURE AddUser
+CREATE OR ALTER PROCEDURE AddUser
     @FirstName NVARCHAR(255),
     @Surname NVARCHAR(255),
     @Email NVARCHAR(255),
@@ -113,7 +113,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE UpdateUser
+CREATE OR ALTER PROCEDURE UpdateUser
     @UserID INT,
     @FirstName NVARCHAR(255),
     @Surname NVARCHAR(255),
@@ -150,7 +150,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE LoginUser
+CREATE OR ALTER PROCEDURE LoginUser
     @Username NVARCHAR(255),
     @Password NVARCHAR(255)
 AS
@@ -177,7 +177,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE AddAccount
+CREATE OR ALTER PROCEDURE AddAccount
     @FirstName NVARCHAR(255),
     @Surname NVARCHAR(255),
     @Email NVARCHAR(255),
@@ -205,7 +205,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE UpdateAccount
+CREATE OR ALTER PROCEDURE UpdateAccount
     @AccountID INT,
     @Email NVARCHAR(255),
     @Phone NVARCHAR(255),
@@ -244,7 +244,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE GetUserByID
+CREATE OR ALTER PROCEDURE GetUserByID
     @UserID INT
 AS
 BEGIN
@@ -268,7 +268,35 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE PerformTransaction
+CREATE OR ALTER PROCEDURE GetAccountByID
+    @AccountID INT
+AS
+BEGIN
+    SELECT 
+        A.AccountID,
+        P.FirstName,
+        P.Surname,
+        P.Email,
+        P.Phone,
+        P.AddressLine1,
+        P.AddressLine2,
+        P.City,
+        P.County,
+        A.AccountNumber,
+        A.SortCode,
+        A.AccountType,
+        A.Balance,
+        A.OverdraftLimit
+    FROM 
+        Account A
+    INNER JOIN 
+        PersonalInfo P ON A.PersonalInfoID = P.PersonalInfoID
+    WHERE 
+        A.AccountID = @AccountID;
+END
+GO
+
+CREATE OR ALTER PROCEDURE PerformTransaction
     @SourceAccountID INT,
     @DestinationAccountID INT,
     @Amount DECIMAL,
