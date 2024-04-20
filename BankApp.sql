@@ -244,6 +244,30 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE GetUserByID
+    @UserID INT
+AS
+BEGIN
+    SELECT 
+        U.UserID,
+        P.FirstName,
+        P.Surname,
+        P.Email,
+        P.Phone,
+        P.AddressLine1,
+        P.AddressLine2,
+        P.City,
+        P.County,
+        U.Username
+    FROM 
+        [User] U
+    INNER JOIN 
+        PersonalInfo P ON U.PersonalInfoID = P.PersonalInfoID
+    WHERE 
+        U.UserID = @UserID;
+END
+GO
+
 CREATE PROCEDURE PerformTransaction
     @SourceAccountID INT,
     @DestinationAccountID INT,
