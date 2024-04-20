@@ -23,15 +23,35 @@ namespace Assignment_2_master
         {
             InitializeComponent();
 
-            var loginForm = new LoginForm();
+            ShowLoginForm();
 
-            loginForm.ShowDialog();
         }
 
         private void MenuUser_Click(object sender, RoutedEventArgs e)
         {
             var fu = new FormUser();
             fu.ShowDialog();
+
+        }
+        private void ShowLoginForm()
+        {
+            var loginForm = new LoginForm();
+
+            loginForm.ShowDialog();
+            if (loginForm.CanContinue == false) { CloseForm(); }
+        }
+        private void CloseForm()
+        {
+            this.Close();
+        }
+        private void MenuLogout_Click(object sender, RoutedEventArgs e)
+        {
+            ShowLoginForm();
+
+        }
+        private void MenuClose_Click(object sender, RoutedEventArgs e)
+        {
+            CloseForm();
 
         }
     }

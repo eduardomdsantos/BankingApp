@@ -14,7 +14,8 @@ namespace Assignment_2_master
         {
             InitializeComponent();
         }
-
+        public bool CanContinue { get; set; }
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var loginDto = new LoginDto
@@ -24,13 +25,14 @@ namespace Assignment_2_master
             };
 
             var loginDAO = new LoginDAO();
-            
-            if(loginDAO.LoginUser(loginDto))
+            CanContinue = loginDAO.LoginUser(loginDto);
+            if (CanContinue)
             {
                 this.Close();
+                return;
             }
 
-            MessageBox.Show("Wrong Password", "WrongPassword", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            BIZ.Utils.ShowMessageBox("WrongPassword");
         }
     }
 }

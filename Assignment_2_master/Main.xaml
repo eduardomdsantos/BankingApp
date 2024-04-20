@@ -10,8 +10,8 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Users" Click="MenuUser_Click"></MenuItem>
-                <MenuItem Header="Logout"></MenuItem>
-                <MenuItem Header="Exit"></MenuItem>
+                <MenuItem Header="Logout" Click="MenuLogout_Click"></MenuItem>
+                <MenuItem Header="Exit" Click="MenuClose_Click"> </MenuItem>
             </MenuItem>
             <MenuItem Header="Account">
                 <MenuItem Header="New Account"></MenuItem>

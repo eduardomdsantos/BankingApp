@@ -24,11 +24,10 @@ namespace Assignment
             try
             {
                 var dr = cmd.ExecuteReader();
-                var result = dr["Authenticated"].ToString();
-
-                if(result == "1")
-                    return true;
-                return false; 
+                if (dr.Read())
+                {
+                    return dr["Authenticated"].ToString() == "1";
+                }
                
             } catch(Exception ex)
             {
