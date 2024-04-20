@@ -25,16 +25,10 @@
             <MenuItem Header="View Accounts"></MenuItem>
         </Menu>
         <Grid>
-            <Border Background="#FF6B6B6D" Margin="5,5,5,5" CornerRadius="30" >
-                <StackPanel Margin="20,20,20,20">
-                    <Separator/>
-                    <Label x:Name="lblUser" Content="Username" Foreground="#FFF9F4F4" FontSize="18"/>
-                    <TextBox x:Name="txtUsername" TextWrapping="Wrap" FontSize="18" />
-                    <Label x:Name="lblPass" Content="Password" FontSize="18" Foreground="#FFF7F6F6"/>
-                    <TextBox x:Name="txtPassword" FontSize="18" />
-                    <Button x:Name="btnLogin" Content="Login" FontSize="18" Margin="20,20,20,0" Background="#FFDDDDDD"/>
-                </StackPanel>
-            </Border>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="391*"/>
+            </Grid.ColumnDefinitions>
         </Grid>
     </DockPanel>
 </Window>
