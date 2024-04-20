@@ -146,26 +146,26 @@ namespace Assignment_2_master
                         txtAddress1.Text = foundUser.Address1;
                         txtAddress2.Text = foundUser.Address2;
                         txtCity.Text = foundUser.City;
-                        //PopulateComboBox(cboCounty, foundUser.County);
+                        cboCounty.SelectedItem = foundUser.County;
                         txtUsername.Text = foundUser.Username;                      
                         ControlButton(true);
                     }
                     else
                     {
-                        //ShowMessageBox("Person not found!");
+                        BIZ.Utils.ShowMessageBox("Person not found!");
                         CleanFields();
                     }
                 }
                 else
                 {
-                    //ShowMessageBox("Please enter a valid Person ID!");
+                    BIZ.Utils.ShowMessageBox("Please enter a valid Person ID!");
                     CleanFields();
 
                 }
             }
             else
             {
-                //ShowMessageBox("Please enter a Person ID!");
+                BIZ.Utils.ShowMessageBox("Please enter a Person ID!");
                 CleanFields();
 
             }

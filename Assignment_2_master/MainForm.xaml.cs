@@ -46,18 +46,7 @@ namespace Assignment_2_master
                 comboBox.Background = Brushes.White; 
             }
         }
-        public MessageBoxResult ConfirmMessageBox(string message)
-        {
-            string title = "Confirm Message Window";
-            MessageBoxResult result = MessageBox.Show(message, title, MessageBoxButton.OKCancel);
-            return result;
-        }
 
-        public void ShowMessageBox(string message)
-        {
-            string title = "Information Message Window";
-            MessageBox.Show(message, title, MessageBoxButton.OK);
-        }
 
 
     }
