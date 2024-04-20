@@ -36,7 +36,6 @@ namespace Assignment_2_master
         private void ShowLoginForm()
         {
             var loginForm = new LoginForm();
-
             loginForm.ShowDialog();
             if (loginForm.CanContinue == false) { CloseForm(); }
         }
@@ -52,6 +51,12 @@ namespace Assignment_2_master
         private void MenuClose_Click(object sender, RoutedEventArgs e)
         {
             CloseForm();
+
+        }
+        private void MenuAccounts_Click(object sender, RoutedEventArgs e)
+        {
+            var fa = new FormAccounts();
+            fa.ShowDialog();
 
         }
     }

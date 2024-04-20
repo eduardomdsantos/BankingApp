@@ -1,4 +1,4 @@
-﻿<Window x:Class="Assignment_2_master.New_Account"
+﻿<Window x:Class="Assignment_2_master.FormAccounts"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,23 +7,6 @@
         mc:Ignorable="d"
         Title="BankApp" Height="450" Width="800">
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
-                <MenuItem Header="Login"></MenuItem>
-                <MenuItem Header="Logout"></MenuItem>
-                <MenuItem Header="Register"></MenuItem>
-                <MenuItem Header="Exit"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="Account">
-                <MenuItem Header="New Account"></MenuItem>
-                <MenuItem Header="Edit Account"></MenuItem>
-                <MenuItem Header="Deposit Funds"></MenuItem>
-                <MenuItem Header="Withdraw Funds"></MenuItem>
-                <MenuItem Header="Transfer Funds"></MenuItem>
-                <MenuItem Header="View Transactions"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="View Accounts"></MenuItem>
-        </Menu>
         <Grid>
             <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
             <Label Content="Surname:" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>

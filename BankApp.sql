@@ -320,6 +320,6 @@ EXEC AddUser
     @AddressLine1 = '123 Admin Street', 
     @AddressLine2 = '123 Admin Street', 
     @City = 'Admin City', 
-    @County = 'Admin County', 
+    @County = 'Dublin', 
     @Username = 'admin', 
     @Password = 'admin';

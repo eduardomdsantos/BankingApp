@@ -11,11 +11,10 @@
             <MenuItem Header="File">
                 <MenuItem Header="Users" Click="MenuUser_Click"></MenuItem>
                 <MenuItem Header="Logout" Click="MenuLogout_Click"></MenuItem>
-                <MenuItem Header="Exit" Click="MenuClose_Click"> </MenuItem>
+                <MenuItem Header="Exit" Click="MenuClose_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Account">
-                <MenuItem Header="New Account"></MenuItem>
-                <MenuItem Header="Edit Account"></MenuItem>
+                <MenuItem Header="Account" Click="MenuAccounts_Click"></MenuItem>
                 <MenuItem Header="Deposit Funds"></MenuItem>
                 <MenuItem Header="Withdraw Funds"></MenuItem>
                 <MenuItem Header="Transfer Funds"></MenuItem>
@@ -25,8 +24,9 @@
         </Menu>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="16*"/>
+                <ColumnDefinition Width="53*"/>
+                <ColumnDefinition Width="731*"/>
             </Grid.ColumnDefinitions>
         </Grid>
     </DockPanel>

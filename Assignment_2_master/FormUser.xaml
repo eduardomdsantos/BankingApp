@@ -23,23 +23,23 @@
             <Label Content="County:" HorizontalAlignment="Left" Margin="10,281,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
             <Label Content="Username:" HorizontalAlignment="Left" Margin="324,64,0,0" VerticalAlignment="Top" Grid.Column="2"/>
             <Label Content="Password:" HorizontalAlignment="Left" Margin="324,95,0,0" VerticalAlignment="Top" Grid.Column="2"/>
-            <TextBox x:Name="txtFirstname" HorizontalAlignment="Left" Margin="84,68,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
-            <ComboBox x:Name="cboCounty" HorizontalAlignment="Left" Margin="84,283,0,0" VerticalAlignment="Top" Width="193" Grid.Column="2"/>
-            <TextBox x:Name="txtSurname" HorizontalAlignment="Left" Margin="84,99,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
-            <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="84,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
-            <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Margin="84,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
-            <TextBox x:Name="txtAddress1" HorizontalAlignment="Left" Margin="84,192,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
-            <TextBox x:Name="txtAddress2" HorizontalAlignment="Left" Margin="84,223,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
-            <TextBox x:Name="txtCity" HorizontalAlignment="Left" Margin="84,254,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
-            <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Margin="432,68,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
-            <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="432,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2" PasswordChar="*"/>
+            <TextBox x:Name="txtFirstname" TabIndex="1" HorizontalAlignment="Left" Margin="84,68,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
+            <ComboBox x:Name="cboCounty" TabIndex="8" HorizontalAlignment="Left" Margin="84,283,0,0" VerticalAlignment="Top" Width="193" Grid.Column="2"/>
+            <TextBox x:Name="txtSurname" TabIndex="2" HorizontalAlignment="Left" Margin="84,99,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
+            <TextBox x:Name="txtEmail" TabIndex="3"  HorizontalAlignment="Left" Margin="84,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
+            <TextBox x:Name="txtPhone" TabIndex="4"  HorizontalAlignment="Left" Margin="84,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
+            <TextBox x:Name="txtAddress1" TabIndex="5"  HorizontalAlignment="Left" Margin="84,192,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
+            <TextBox x:Name="txtAddress2" TabIndex="6"  HorizontalAlignment="Left" Margin="84,223,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
+            <TextBox x:Name="txtCity" TabIndex="7" HorizontalAlignment="Left" Margin="84,254,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
+            <TextBox x:Name="txtUsername" TabIndex="9" HorizontalAlignment="Left" Margin="432,68,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
+            <PasswordBox x:Name="txtPassword" TabIndex="10"  HorizontalAlignment="Left" Margin="432,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2" PasswordChar="*"/>
             <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="659,64,0,0" VerticalAlignment="Top" Width="110" Height="40" Grid.Column="2" Click="btnAdd_Click"/>
-            <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="659,119,0,0" VerticalAlignment="Top" Width="110" Height="40" Grid.Column="2"/>
+            <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="659,119,0,0" VerticalAlignment="Top" Width="110" Height="40" Grid.Column="2" Click="btnEdit_Click"/>
             <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="659,229,0,0" VerticalAlignment="Top" Width="110" Height="40" Grid.Column="2" Click="btnClose_Click"/>
             <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="659,176,0,0" VerticalAlignment="Top" Width="110" Height="40" Grid.Column="2" Click="btnCancel_Click"/>
             <Rectangle Grid.Column="2" HorizontalAlignment="Left" Height="47" Margin="5,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="620"/>
             <Label Content="User ID:" HorizontalAlignment="Left" Margin="12,21,0,0" VerticalAlignment="Top" Grid.Column="2"/>
-            <TextBox x:Name="txtFindUserID" HorizontalAlignment="Left" Margin="84,25,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
+            <TextBox x:Name="txtFindUserID" TabIndex="0" HorizontalAlignment="Left" Margin="84,25,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.192,0.428" Width="193" Grid.Column="2"/>
             <Button x:Name="btnFind" Grid.Column="2" Content="Find" HorizontalAlignment="Left" Height="22" Margin="298,21,0,0" VerticalAlignment="Top" Width="81" Click="btnFind_Click"/>
 
         </Grid>

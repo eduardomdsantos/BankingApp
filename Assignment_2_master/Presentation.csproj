@@ -102,7 +102,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Accounts.xaml">
+    <Page Include="FormAccounts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,8 +116,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts.xaml.cs">
-      <DependentUpon>Accounts.xaml</DependentUpon>
+    <Compile Include="FormAccounts.xaml.cs">
+      <DependentUpon>FormAccounts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

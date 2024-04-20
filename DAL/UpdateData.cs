@@ -7,15 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 
-namespace Assignment.Models
+namespace Assignment
 {
-    internal class UpdateData : DAO
+    public class UpdateData : DAO
     {
-        public void UpdatePerson(User updateUser)
+        public void UpdateUser(User updateUser)
         {
             SqlCommand cmd = OpenCon().CreateCommand();
             cmd.CommandText = "UpdateUser";
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserID", updateUser.UserId);
             cmd.Parameters.AddWithValue("@FirstName", updateUser.FirstName);
             cmd.Parameters.AddWithValue("@Surname", updateUser.Surname);
             cmd.Parameters.AddWithValue("@Email", updateUser.Email);

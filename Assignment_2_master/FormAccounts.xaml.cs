@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Assignment_2_master
 {
     /// <summary>
-    /// Interaction logic for New_Account.xaml
+    /// Interaction logic for FormAccounts.xaml
     /// </summary>
-    public partial class New_Account : Window
+    public partial class FormAccounts : Window
     {
-        public New_Account()
+        public FormAccounts()
         {
             InitializeComponent();
         }

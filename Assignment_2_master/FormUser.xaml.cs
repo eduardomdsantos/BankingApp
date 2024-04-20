@@ -20,9 +20,11 @@ namespace Assignment_2_master
             ControlButton(false);
         }
         AddData add = new AddData();
+        UpdateData update = new UpdateData();
         User foundUser = null;
         private void CleanFields()
         {
+            txtFindUserID.Clear();
             txtFirstname.Clear();
             txtSurname.Clear();
             txtEmail.Clear();
@@ -43,6 +45,7 @@ namespace Assignment_2_master
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+
             string firstName = txtFirstname.Text;
             string surName = txtSurname.Text;
             string email = txtEmail.Text;
@@ -102,8 +105,8 @@ namespace Assignment_2_master
                     string addressLine2 = dr["AddressLine2"].ToString();
                     string city = dr["City"].ToString();
                     string county = dr["County"].ToString();
-                    string username = dr["Username"].ToString();
-
+                    string username = dr["Username"].ToString();                    
+                    int userId = int.Parse(dr["UserID"].ToString());
                     userFound = new DAL.User
                     (
                         firstName,
@@ -115,7 +118,9 @@ namespace Assignment_2_master
                         city,
                         county,
                         username,
-                        ""
+                        "",
+                        userId
+
                     );
                 }
             }
@@ -146,7 +151,7 @@ namespace Assignment_2_master
                         txtAddress1.Text = foundUser.Address1;
                         txtAddress2.Text = foundUser.Address2;
                         txtCity.Text = foundUser.City;
-                        cboCounty.SelectedItem = foundUser.County;
+                        BIZ.Utils.PopulateComboBox(cboCounty,foundUser.County);
                         txtUsername.Text = foundUser.Username;                      
                         ControlButton(true);
                     }
@@ -171,6 +176,49 @@ namespace Assignment_2_master
             }
 
 
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (TestRequiredFields() == false) { return; }
+
+            string firstName = txtFirstname.Text;
+            string surName = txtSurname.Text;
+            string email = txtEmail.Text;
+            string phone = txtPhone.Text;
+            string address1 = txtAddress1.Text;
+            string address2 = txtAddress2.Text;
+            string city = txtCity.Text;
+            string county = cboCounty.SelectedItem.ToString();
+            string username = txtUsername.Text;
+            string password = txtPassword.Password;
+
+            var updateUser = new DAL.User(firstName, surName, email, phone, address1, address2, city, county, username, password, foundUser.UserId);
+
+            update.UpdateUser(updateUser);
+
+            CleanFields();
+            ControlButton(false);
+        }
+        private bool TestRequiredFields()
+        {
+            if (IsFieldEmptyOrWhitespace(txtUsername.Text, txtPassword.Password, txtFirstname.Text, txtSurname.Text, txtEmail.Text, txtPhone.Text))
+            {
+                BIZ.Utils.ShowMessageBox("All fields are required.");
+                return false;
+            }
+            return true;
+        }
+        private bool IsFieldEmptyOrWhitespace(params string[] fields)
+        {
+            foreach (string field in fields)
+            {
+                if (string.IsNullOrWhiteSpace(field))
+                {
+                    return true; 
+                }
+            }
+            return false; 
         }
     }
 }
