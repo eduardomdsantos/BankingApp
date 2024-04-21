@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Assignment;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,18 @@ namespace Assignment_2_master
         public View_Accounts()
         {
             InitializeComponent();
+            Activated += MainWindow_Activated;
+        }
+        private void LoadTranscations()
+        {
+            var transcationDAO = new TransactionDAO();
+            DataTable dt = transcationDAO.GetAllTransactions();
+
+            dgTranscations.ItemsSource = dt.DefaultView;
+        }
+        private void MainWindow_Activated(object sender, EventArgs e)
+        {
+            LoadTranscations();
         }
     }
 }

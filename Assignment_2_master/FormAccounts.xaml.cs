@@ -82,6 +82,7 @@ namespace Assignment_2_master
         {
             CleanFields();
             ControlButton(false);
+            SetEditMode(true);
         }
         private bool TestRequiredFields()
         {
@@ -253,7 +254,7 @@ namespace Assignment_2_master
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
-
+            foundAccount.ExportToXml();
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)

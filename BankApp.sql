@@ -320,6 +320,36 @@ BEGIN
 END
 GO
 
+CREATE OR ALTER PROCEDURE GetAllTransactions
+AS
+BEGIN
+    SELECT 
+        T.TransactionID,
+        U.UserID,
+        U.Username,
+        A.AccountID,
+        A.AccountNumber,
+        A.SortCode,
+        T.TransactionType,
+        T.Amount,
+        T.TransactionDate,
+        T.ReferenceNumber,
+        T.RecipientBankName,
+        T.RecipientAccountNumber,
+        T.RecipientAccountHolderName,
+        T.IntermediaryBankName,
+        T.IntermediaryBankAccountNumber,
+        T.IsTransfer
+    FROM 
+        [Transaction] T
+    INNER JOIN 
+        [User] U ON T.UserID = U.UserID
+    INNER JOIN 
+        Account A ON T.AccountID = A.AccountID;
+END
+GO
+
+
 CREATE OR ALTER PROCEDURE PerformTransaction
     @SourceAccountID INT,
     @DestinationAccountID INT,
