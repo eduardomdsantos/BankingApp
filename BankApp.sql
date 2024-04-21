@@ -333,13 +333,13 @@ BEGIN
         T.TransactionType,
         T.Amount,
         T.TransactionDate,
+        T.IsTransfer,
         T.ReferenceNumber,
         T.RecipientBankName,
         T.RecipientAccountNumber,
         T.RecipientAccountHolderName,
         T.IntermediaryBankName,
-        T.IntermediaryBankAccountNumber,
-        T.IsTransfer
+        T.IntermediaryBankAccountNumber
     FROM 
         [Transaction] T
     INNER JOIN 

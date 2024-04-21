@@ -5,12 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2_master"
         mc:Ignorable="d"
+        MinWidth="1280" 
+        MinHeight="768"        
+        WindowStartupLocation="CenterScreen"
         Title="View Transactions" Height="450" Width="800">
     <DockPanel>
         <Grid>
             <StackPanel>
                 <TextBlock Margin="0,10" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" Text="List of Transactions" />
-                <DataGrid x:Name="dgTranscations" AutoGenerateColumns="True" d:ItemsSource="{d:SampleData ItemCount=5}" />
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <DataGrid x:Name="dgTranscations" AutoGenerateColumns="True" d:ItemsSource="{d:SampleData ItemCount=5}" />
+                </ScrollViewer>
+                
             </StackPanel>
 
         </Grid>
