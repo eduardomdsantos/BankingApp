@@ -83,8 +83,8 @@
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View.xaml.cs">
-      <DependentUpon>View.xaml</DependentUpon>
+    <Compile Include="FormViewTranscation.xaml.cs">
+      <DependentUpon>FormViewTranscation.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -110,7 +110,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View.xaml">
+    <Page Include="FormViewTranscation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

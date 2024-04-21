@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace Assignment_2_master
 {
     /// <summary>
-    /// Interaction logic for View_Accounts.xaml
+    /// Interaction logic for FormViewTranscation.xaml
     /// </summary>
-    public partial class View_Accounts : Window
+    public partial class FormViewTranscation : Window
     {
-        public View_Accounts()
+        public FormViewTranscation()
         {
             InitializeComponent();
             Activated += MainWindow_Activated;

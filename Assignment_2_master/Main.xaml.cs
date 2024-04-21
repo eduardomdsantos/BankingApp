@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Assignment;
+using System.Windows.Forms;
 
 namespace Assignment_2_master
 {
@@ -41,6 +42,12 @@ namespace Assignment_2_master
         {
             var ft = new FormTransaction();
             ft.ShowDialog();
+
+        }
+        private void MenuViewTransaction_Click(object sender, RoutedEventArgs e)
+        {
+            var fvt = new FormViewTranscation();
+            fvt.ShowDialog();
 
         }
         private void ShowLoginForm()

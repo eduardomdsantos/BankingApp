@@ -21,7 +21,7 @@
                 <MenuItem Header="Account" Click="MenuAccounts_Click"></MenuItem>
                 <Separator/>
                 <MenuItem Header="Make Transaction" Click="MenuTransaction_Click"></MenuItem>
-                <MenuItem Header="View Transactions"></MenuItem>
+                <MenuItem Header="View Transactions" Click="MenuViewTransaction_Click" ></MenuItem>
             </MenuItem>
         </Menu>
         <StackPanel>
