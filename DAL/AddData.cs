@@ -69,7 +69,7 @@ namespace Assignment
             cmd.Parameters.AddWithValue("@RecipientAccountHolderName", newTransaction.RecipientAccountHolderName);
             cmd.Parameters.AddWithValue("@IntermediaryBankName", newTransaction.IntermediaryBankName);
             cmd.Parameters.AddWithValue("@IntermediaryBankAccountNumber", newTransaction.IntermediaryBankAccountNumber);
-            cmd.Parameters.AddWithValue("@ReferenceNumber", newTransaction.TransferReference);
+            cmd.Parameters.AddWithValue("@ReferenceNumber", newTransaction.ReferenceNumber);
 
 
             cmd.ExecuteNonQuery();

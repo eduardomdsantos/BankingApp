@@ -13,7 +13,7 @@ namespace DAL
         public int DestinationAccountID { get; set; } // Property for the destination account ID
         public string TransactionType { get; set; }
         public decimal Amount { get; set; }
-        public string TransferReference { get; set; }
+        public string ReferenceNumber{ get; set; }
         public string RecipientBankName { get; set; }
         public string RecipientAccountNumber { get; set; }
         public string RecipientAccountHolderName { get; set; }
@@ -21,13 +21,13 @@ namespace DAL
         public string IntermediaryBankAccountNumber { get; set; }
 
         // Constructor without TransactionId parameter
-        public Transaction(int AccountId, int destinationAccountId, string transactionType, decimal amount, string transferReference, string recipientBankName, string recipientAccountNumber, string recipientAccountHolderName, string intermediaryBankName, string intermediaryBankAccountNumber)
+        public Transaction(int AccountId, int destinationAccountId, string transactionType, decimal amount, string referenceNumber, string recipientBankName, string recipientAccountNumber, string recipientAccountHolderName, string intermediaryBankName, string intermediaryBankAccountNumber)
         {
             AccountID = AccountId;
             DestinationAccountID = destinationAccountId;
             TransactionType = transactionType;
             Amount = amount;
-            TransferReference = transferReference;
+            ReferenceNumber = referenceNumber;
             RecipientBankName = recipientBankName;
             RecipientAccountNumber = recipientAccountNumber;
             RecipientAccountHolderName = recipientAccountHolderName;

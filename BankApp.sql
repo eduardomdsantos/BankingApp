@@ -70,7 +70,7 @@ CREATE TABLE [Transaction] (
     [TransactionType] NVARCHAR(255),
     [Amount] DECIMAL,
     [TransactionDate] DATETIME,
-    [TransferReference] NVARCHAR(255),
+    [ReferenceNumber] NVARCHAR(255),
     [RecipientBankName] NVARCHAR(255),
     [RecipientAccountNumber] NVARCHAR(255),
     [RecipientAccountHolderName] NVARCHAR(255),
@@ -362,19 +362,21 @@ BEGIN
             UPDATE Account SET Balance = @SourceBalance - @Amount WHERE AccountID = @SourceAccountID
             UPDATE Account SET Balance = @DestinationBalance + @Amount WHERE AccountID = @DestinationAccountID
 
-            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, IsTransfer)
-            VALUES (@UserID, @SourceAccountID, 'Withdrawal', @Amount, GETDATE(), 'Y') 
+            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, IsTransfer, ReferenceNumber)
+            VALUES (@UserID, @SourceAccountID, 'Withdrawal', @Amount, GETDATE(), 'Y', @ReferenceNumber) 
 
-            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, IsTransfer)
-            VALUES (@UserID, @DestinationAccountID, 'Lodge', @Amount, GETDATE(), 'Y') 
+            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, IsTransfer, ReferenceNumber)
+            VALUES (@UserID, @DestinationAccountID, 'Lodge', @Amount, GETDATE(), 'Y', @ReferenceNumber) 
         END
+
 
         IF @TransactionType = 'External_Transfer'
         BEGIN
             UPDATE Account SET Balance = @SourceBalance - @Amount WHERE AccountID = @SourceAccountID
-            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, RecipientBankName, RecipientAccountNumber, RecipientAccountHolderName, IntermediaryBankName, IntermediaryBankAccountNumber, IsTransfer)
-            VALUES (@UserID, @SourceAccountID, 'Withdrawal', @Amount, GETDATE(), @RecipientBankName, @RecipientAccountNumber, @RecipientAccountHolderName, @IntermediaryBankName, @IntermediaryBankAccountNumber, 'Y') 
+            INSERT INTO [Transaction] (UserID, AccountID, TransactionType, Amount, TransactionDate, RecipientBankName, RecipientAccountNumber, RecipientAccountHolderName, IntermediaryBankName, IntermediaryBankAccountNumber, IsTransfer, ReferenceNumber)
+            VALUES (@UserID, @SourceAccountID, 'Withdrawal', @Amount, GETDATE(), @RecipientBankName, @RecipientAccountNumber, @RecipientAccountHolderName, @IntermediaryBankName, @IntermediaryBankAccountNumber, 'Y', @ReferenceNumber) 
         END
+
 
         COMMIT TRANSACTION;
     END TRY

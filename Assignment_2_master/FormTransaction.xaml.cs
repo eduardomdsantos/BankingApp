@@ -46,18 +46,28 @@ namespace Assignment_2_master
             txtDestinationAccountID.IsEnabled = enableInternalTransfer;
             txtInternalTransferReferenceNumber.IsEnabled = enableInternalTransfer;
 
+            txtDestinationAccountID.IsEnabled = enableInternalTransfer;
+            txtInternalTransferReferenceNumber.IsEnabled = enableInternalTransfer;
+            btnFindDestinationAccountID.IsEnabled = enableInternalTransfer;
             txtDestinationAccountID.Clear();
+            txtDestinationFirstName.Clear();
+            txtDestinationSurname.Clear();
+            txtDestinationAccountNumber.Clear();
             txtInternalTransferReferenceNumber.Clear();
 
             txtRecipientAccountNumber.IsEnabled = enableExternalTransfer;
             txtRecipientAccountHolderName.IsEnabled = enableExternalTransfer;
             txtIntermediaryBankName.IsEnabled = enableExternalTransfer;
             txtIntermediaryBankAccountNumber.IsEnabled = enableExternalTransfer;
+            txtExternalTransferReferenceNumber.IsEnabled = enableExternalTransfer;
+            txtRecipientBankName.IsEnabled = enableExternalTransfer;
 
             txtRecipientAccountNumber.Clear();
             txtRecipientAccountHolderName.Clear();
             txtIntermediaryBankName.Clear();
             txtIntermediaryBankAccountNumber.Clear();
+            txtExternalTransferReferenceNumber.Clear();
+            txtRecipientBankName.Clear();
 
             if (enableInternalTransfer)
             {
@@ -67,8 +77,6 @@ namespace Assignment_2_master
             {
                 tabControl.SelectedItem = tabExternalTransfer;
             }
-
-
 
         }
 
@@ -102,6 +110,9 @@ namespace Assignment_2_master
             txtDestinationFirstName.Clear();
             txtDestinationSurname.Clear();
             txtDestinationAccountNumber.Clear();
+
+            txtExternalTransferReferenceNumber.Clear();
+            txtRecipientBankName.Clear();
         }
     
         private void ControlButton(bool editMode)
@@ -244,7 +255,7 @@ namespace Assignment_2_master
         {
             string transactionType = cmbTransactionType.SelectedItem?.ToString();
             decimal amount = decimal.Parse(txtAmount.Text);
-            string transferReference = tabExternalTransfer.IsEnabled ? txtExternalTransferReferenceNumber.Text : txtInternalTransferReferenceNumber.Text;
+            string referenceNumber = tabExternalTransfer.IsEnabled ? txtExternalTransferReferenceNumber.Text : txtInternalTransferReferenceNumber.Text;
             string recipientBankName = txtRecipientBankName.Text;
             string recipientAccountNumber = txtRecipientAccountNumber.Text;
             string recipientAccountHolderName = txtRecipientAccountHolderName.Text;
@@ -252,7 +263,7 @@ namespace Assignment_2_master
             string intermediaryBankAccountNumber = txtIntermediaryBankAccountNumber.Text;
             int sournceAccountId = sourceAccount.AccountId;
             int destinationAccountId = destinationAccount?.AccountId ?? 0;
-            var newTransaction = new DAL.Transaction(sournceAccountId, destinationAccountId, transactionType, amount, transferReference, recipientBankName, recipientAccountNumber, recipientAccountHolderName, intermediaryBankName, intermediaryBankAccountNumber);
+            var newTransaction = new DAL.Transaction(sournceAccountId, destinationAccountId, transactionType, amount, referenceNumber, recipientBankName, recipientAccountNumber, recipientAccountHolderName, intermediaryBankName, intermediaryBankAccountNumber);
 
             add.PerformTransaction(newTransaction);
 
